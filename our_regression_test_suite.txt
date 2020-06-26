@@ -1,0 +1,6 @@
+____________________ to be implement _____________________
+1. Create checkout Page
+2. Create add product review / compare Page & Test case (176)
+3. create product checkout and order details Page & Test case (178, 179, 180)
+
+__________________________________________________________
