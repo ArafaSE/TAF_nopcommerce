@@ -24,6 +24,15 @@ public class ShoppingCartPage extends PageBase {
     @FindBy(css = "div.no-data")
     public WebElement noDataMsg;
 
+    @FindBy(id="checkout")
+    WebElement checkoutBtn ;
+
+    @FindBy(id="termsofservice")
+    WebElement agreeCheckbox;
+
+    @FindBy(css="input.button-1.checkout-as-guest-button")
+    WebElement guestCheckoutBtn ;
+
     public void removeProductFromCart(){
         clickButton(removeFromCartCheck);
         clickButton(updateCartBtn);
@@ -34,6 +43,19 @@ public class ShoppingCartPage extends PageBase {
         clearText(quantityTxt);
         setTextElement(quantityTxt, quantity);
         clickButton(updateCartBtn);
+    }
+
+    public void openCheckoutPage()
+    {
+        clickButton(agreeCheckbox);
+        clickButton(checkoutBtn);
+    }
+
+    public void openCheckoutPageAsGuest()
+    {
+        clickButton(agreeCheckbox);
+        clickButton(checkoutBtn);
+        clickButton(guestCheckoutBtn);
     }
 
 }

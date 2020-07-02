@@ -1,5 +1,6 @@
 package tests;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -10,8 +11,9 @@ import utilities.Helper;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class TestBase extends AbstractTestNGCucumberTests {
     public static WebDriver driver;
+    public String homeUrl = "https://demo.nopcommerce.com/";
 
     @BeforeSuite
     @Parameters({"browser"})
@@ -26,7 +28,7 @@ public class TestBase {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.navigate().to("https://demo.nopcommerce.com/");
+        driver.navigate().to(homeUrl);
     }
 
     @AfterSuite
