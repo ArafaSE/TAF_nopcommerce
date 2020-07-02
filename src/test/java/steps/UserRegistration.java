@@ -1,5 +1,6 @@
 package steps;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,10 +10,17 @@ import pages.HomePage;
 import pages.UserRegistrationPage;
 import tests.TestBase;
 
+
 public class UserRegistration extends TestBase {
     HomePage homeObject;
     UserRegistrationPage registerObject;
 
+    // fake data from gitHub Java Faker
+    Faker fakeUser = new Faker();
+    String fName = fakeUser.name().firstName();
+    String lName = fakeUser.name().lastName();
+    String email = fakeUser.internet().emailAddress();
+    String password = fakeUser.number().digits(8).toString();
 
     @Given("the user in the home page")
     public void the_user_in_the_home_page() {
@@ -25,10 +33,10 @@ public class UserRegistration extends TestBase {
         Assert.assertTrue(driver.getCurrentUrl().contains("register"));
     }
 
-    @And("I entered {string}, {string}, {string}, {string}")
-    public void iEntered(String firstName, String lastName, String email, String password) {
+    @And("I entered user data")
+    public void iEnteredUserData() {
         registerObject = new UserRegistrationPage(driver);
-        registerObject.userRegistration(firstName, lastName, email, password);
+        registerObject.userRegistration(fName, lName, email, password);
 
         Assert.assertTrue(registerObject.successMsg.getText().contains("Your registration completed"));
     }
