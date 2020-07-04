@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utilities.Helper;
@@ -17,7 +20,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
 
     @BeforeSuite
     @Parameters({"browser"})
-    public void startDriver(@Optional("chrome") String browserName){
+    public void startDriver(@Optional("headlessPhantomJs") String browserName){
         if (browserName.equalsIgnoreCase("chrome")){
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\drivers\\chromedriver.exe");
             System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
@@ -26,6 +29,18 @@ public class TestBase extends AbstractTestNGCucumberTests {
             System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\drivers\\geckodriver.exe");
             driver = new FirefoxDriver();
         }
+        // headless browser testing with phantomJs
+        else if(browserName.equalsIgnoreCase("headlessPhantomJs")){
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setJavascriptEnabled(true);
+            caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                    System.getProperty("user.dir") + "\\drivers\\phantomjs.exe");
+            String[] phantomJsArgs = {"--web-security=no","--ignore-ssl-errors=yes"};
+            caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomJsArgs);
+
+            driver = new PhantomJSDriver(caps);
+        }
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.navigate().to(homeUrl);

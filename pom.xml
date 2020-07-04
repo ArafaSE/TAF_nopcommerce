@@ -101,6 +101,13 @@
             <version>14.0.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.4.4</version>
+        </dependency>
+
     </dependencies>
 
     <profiles>

@@ -16,7 +16,7 @@ public class UserRegistrationTest extends TestBase {
     public static Object[][] userData() {
         return new Object[][]{
                 {"Mohamed", "Arafa", "arafa2222@gmail.com", "AR27383"},
-                {"Ahmed", "Rami", "rami7765@gmail.com", "RM01134"}
+                {"Ahmed", "Rami", "rami77653@gmail.com", "RM01134"}
         };
     }
 

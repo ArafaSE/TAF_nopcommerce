@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite parallel="false" name="nop commerce regression suite">
-    <parameter name="browser" value="chrome"/>
+    <parameter name="browser" value="headlessPhantomJs"/>
     <test name="Regression Test" preserve-order="false">
         <classes>
             <class name="tests.UserRegistrationTest"/>
