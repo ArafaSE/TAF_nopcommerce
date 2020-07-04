@@ -3,6 +3,7 @@ target/
 test-output/
 .idea/
 screenshots/
+phantomjsdriver.log
 
 # Compiled source #
 ###################
