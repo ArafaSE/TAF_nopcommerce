@@ -1,12 +1,9 @@
 # TAF_nopcommerce
-Selenium Framework project using Java, Maven, TestNH and POM
+Selenium Framework project using Java, Maven, TestNG and POM
 
-And we are using BDD and DDT frameworks in the project 
-
-# Tech Stach
+# Tech Stack
 - Java
 - Maven
 - TestNG
-- BDD
-- DDT
+- BDD with Cucumber
  
